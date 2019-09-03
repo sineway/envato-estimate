@@ -3,6 +3,7 @@
     "name": "Envato Estimate",
     "description": "Shows earnings an item generates on Envato Market",
     "version": "1.0.0",
+    "minimum_chrome_version": "76.0",
     "applications": {
         "gecko": {
             "id": "envato-estimate@sineway",
