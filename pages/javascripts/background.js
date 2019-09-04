@@ -8,25 +8,30 @@ const pattern = new RegExp([
     "\\/([0-9]+)"
 ].join(""));
 
-const loadData = (tabId, tabUrl) => {
-    chrome.storage.sync.get(["apiToken"], (data) => {
-        const [matchedUrl, itemId] = pattern.exec(tabUrl);
-        window.dataLoaded = new Catalog(data.apiToken).getItem(itemId);
-        chrome.pageAction.show(tabId);
+const loadData = (url) => {
+    const [, itemId] = pattern.exec(url);
+    return new Promise((resolve) => {
+        chrome.storage.sync.get(["apiToken"], resolve);
+    }).then(({apiToken}) => {
+        return new Catalog(apiToken).getItem(itemId);
     });
 };
 
+window.dataLoaded = {};
+
 chrome.tabs.onUpdated.addListener((tabId, info, tab) => {
     if (tab.status === "complete" && pattern.test(tab.url)) {
-        loadData(tab.id, tab.url);
+        dataLoaded[tab.id] = loadData(tab.url);
+        chrome.pageAction.show(tab.id);
     }
 });
 
+chrome.tabs.onRemoved.addListener((tabId, info) => {
+    delete dataLoaded[tabId];
+});
+
 chrome.storage.onChanged.addListener((changes, area) => {
-    if (!changes.apiToken) {
-        return;
-    }
     chrome.tabs.query({active: true}, ([tab]) => {
-        loadData(tab.id, tab.url);
+        dataLoaded[tab.id] = loadData(tab.url);
     });
 });
