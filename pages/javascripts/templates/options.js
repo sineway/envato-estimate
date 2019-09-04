@@ -22,7 +22,7 @@ export const options = (data) => html`
                             API token
                         </label>
                         <span class="text-field__help-text">
-                            Generate one at <a class="anchor" href="https://build.envato.com/create-token">build.envato.com</a>
+                            Generate one at <a class="anchor" href="https://build.envato.com/create-token" target="_blank" rel="noopener noreferrer">build.envato.com</a>
                         </span>
                     </span>
                 </div>
