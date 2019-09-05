@@ -3,6 +3,7 @@ module.exports = {
         "*",
         "pages/test-{views,models}.html",
         "pages/javascripts/models/test.js",
+        "images/{promo,screenshot}-*",
         "!{fonts,images,pages}",
         "!manifest.json"
     ],
