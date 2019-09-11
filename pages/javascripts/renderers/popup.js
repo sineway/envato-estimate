@@ -18,16 +18,5 @@ export class PopupRenderer extends BaseRenderer {
     renderSuccess(model) {
         this.insertHTML(popup(model));
         new Table(document.querySelector(".table"));
-
-        try {
-            const [extType] = chrome.runtime.getURL("").split(":");
-            if (extType === "moz-extension") {
-                document.defaultView.addEventListener("resize", () => {
-                    document.documentElement.style.height = `${document.body.scrollHeight}px`;
-                });
-            }
-        } catch (error) {
-            // no chrome or getURL()
-        }
     }
 }
