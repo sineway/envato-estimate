@@ -1,7 +1,5 @@
 # Envato Estimate
 
-Web extension that relies on public Envato API to show earnings an item generates on Envato Market
-
 ![Screenshot](images/screenshot-640x400c.png)
 
 ## Download
