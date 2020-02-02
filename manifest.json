@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Envato Estimate",
-    "description": "Shows earnings an item generates on Envato Market",
-    "version": "1.0.5",
+    "description": "View estimated item revenue on Envato Market",
+    "version": "1.0.6",
     "minimum_chrome_version": "76.0",
     "applications": {
         "gecko": {
@@ -14,7 +14,10 @@
     "icons": {
         "500": "images/icons8-estimate-500.png"
     },
-    "permissions": ["tabs", "storage"],
+    "permissions": [
+        "tabs",
+        "storage"
+    ],
     "background": {
         "page": "pages/background.html"
     },
