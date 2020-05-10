@@ -13,7 +13,9 @@ export class BuyerFee {
             "sketch-templates": 200,
             "typeengine-themes": 400,
             "static-site-generators": 400,
-            "courses": 100
+            "courses": 100,
+            "template-kits": 500,
+            "ui-templates": 200
         };
         this.codecanyon = {
             "javascript": 200,
